@@ -1,0 +1,32 @@
+function name: add_digital_ids 
+@params: private digital_object: Struct{}
+
+What it does?
+1. It saves the params Struct into the mapping of key_to_userID
+2. Mapping key is user's public address
+
+
+function name: update_digital_ids 
+@params: private digital_object: Struct{}
+
+1. First checks if already stored or not, if not throw error
+2. Updates entire thing not just the one
+
+IMPORTANT
+For update of any one field like i want to update my twitter id 
+I need to supply entire Struct 
+
+
+function name: get_digital_ids_hash 
+@params: private digital_object: Struct{}
+
+1. It would first return the BHP:256 hash aka fields
+of the Struct
+2. It then checks with the mappings by doing the key val retrieve
+3. Again hash's the retrieved Struct and checks wether
+the user params Struct hash is equal to retrieved Struct Hash
+
+IMPORTANT
+If you supply different Struct than the time of add_digital_ids
+then the hash differs and throws error. Which implies that
+it's the same info stored on-chain as the off-chain backend
